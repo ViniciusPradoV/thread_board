@@ -26,7 +26,7 @@ class ThreadsAdapter(val threads: MutableList<Thread>) : RecyclerView.Adapter<Th
       val thread = threads[position]
       holder.threadView.tv_threadTitle.text = thread.title
       holder.threadView.tv_initialPost.text = thread.initialPost
-      holder.threadView.tv_threadAuthor.text = thread.author
+      holder.threadView.tv_threadAuthor.text = "By: ${thread.author}"
       val commentLayoutManager = LinearLayoutManager(holder.threadView.rv_comment.context, RecyclerView.VERTICAL , false)
 
         holder.threadView.rv_comment.apply{

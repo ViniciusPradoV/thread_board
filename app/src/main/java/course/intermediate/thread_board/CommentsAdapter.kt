@@ -18,7 +18,7 @@ class CommentsAdapter(val comments: MutableList<Comment>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
 
         val comment = comments[position]
-        holder.commentView.tv_postAuthor.text = comment.author
+        holder.commentView.tv_postAuthor.text = "By: ${comment.author}"
         holder.commentView.tv_postBody.text = comment.body
     }
 

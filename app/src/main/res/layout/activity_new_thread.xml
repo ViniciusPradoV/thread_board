@@ -2,7 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NewThreadActivity"
@@ -15,7 +14,7 @@
         android:text=""
         android:hint="@string/choose_a_new_thread_title"
         android:inputType="text"
-        android:autofillHints="" />
+        android:autofillHints="title" />
 
     <EditText
         android:id="@+id/thread_post"
@@ -28,6 +27,7 @@
         android:lines="8"
         android:maxLines="10"
         android:scrollbars="vertical"
+        android:autofillHints="comment"
         />
 
     <Button android:id="@+id/save_thread"
