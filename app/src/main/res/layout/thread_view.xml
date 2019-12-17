@@ -58,5 +58,13 @@
             android:padding="8dp">
         </androidx.recyclerview.widget.RecyclerView>
 
+        <Button
+            android:id="@+id/btn_reply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reply"
+            android:background="#00897B"
+            />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

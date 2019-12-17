@@ -1,29 +1,35 @@
-package course.intermediate.thread_board
+package course.intermediate.thread_board.thread
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.view.*
+import course.intermediate.thread_board.comment.CommentsAdapter
+import course.intermediate.thread_board.R
 import kotlinx.android.synthetic.main.thread_view.view.*
 
-class ThreadsAdapter(val threads: MutableList<Thread>) : RecyclerView.Adapter<ThreadsAdapter.ThreadViewHolder>() {
 
-    class ThreadViewHolder(val threadView: View): RecyclerView.ViewHolder(threadView)
+class ThreadsAdapter(val threads: MutableList<Thread>, val clickListener : (Thread) -> Unit) : RecyclerView.Adapter<ThreadsAdapter.ThreadViewHolder>() {
+
+    class ThreadViewHolder(val threadView: View): RecyclerView.ViewHolder(threadView){
+        fun bind(thread: Thread, clickListener: (Thread) -> Unit){
+            threadView.btn_reply.setOnClickListener{clickListener(thread)}
+        }
+    }
 
     private val viewPool = RecyclerView.RecycledViewPool()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreadViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.thread_view, parent, false)
-        return ThreadViewHolder(view)
+        return ThreadViewHolder(
+            view
+        )
     }
 
     override fun onBindViewHolder(holder: ThreadViewHolder, position: Int) {
-
       val thread = threads[position]
+        holder.bind(thread, clickListener)
       holder.threadView.tv_threadTitle.text = thread.title
       holder.threadView.tv_initialPost.text = thread.initialPost
       holder.threadView.tv_threadAuthor.text = "By: ${thread.author}"
@@ -31,7 +37,8 @@ class ThreadsAdapter(val threads: MutableList<Thread>) : RecyclerView.Adapter<Th
 
         holder.threadView.rv_comment.apply{
             layoutManager = commentLayoutManager
-            adapter = CommentsAdapter(thread.posts)
+            adapter =
+                CommentsAdapter(thread.posts)
             setRecycledViewPool(viewPool)
         }
     }

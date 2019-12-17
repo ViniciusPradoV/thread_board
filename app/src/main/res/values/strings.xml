@@ -5,4 +5,7 @@
     <string name="write_an_initial_post">Write an initial post</string>
     <string name="start_new_thread">Start a New Thread</string>
     <string name="author">By: %1$s </string>
+    <string name="reply">Reply </string>
+    <string name="author_name">Author name</string>
+    <string name="write_a_reply">Write a reply</string>
 </resources>

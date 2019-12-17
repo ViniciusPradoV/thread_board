@@ -1,7 +1,8 @@
-package course.intermediate.thread_board
+package course.intermediate.thread_board.thread
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import course.intermediate.thread_board.R
 
 class NewThreadActivity: AppCompatActivity() {
 
