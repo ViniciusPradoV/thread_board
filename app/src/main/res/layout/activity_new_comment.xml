@@ -17,7 +17,7 @@
         android:maxLines="10"
         android:scrollbars="vertical"
         android:autofillHints="comment"
-        tools:targetApi="o"/>
+        tools:targetApi="o" />
 
     <EditText
         android:id="@+id/comment_author"
@@ -27,12 +27,13 @@
         android:hint="@string/author_name"
         android:inputType="text"
         android:autofillHints="author"
-        tools:targetApi="o"/>
+        tools:targetApi="o" />
 
     <Button android:id="@+id/save_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00897B"
+        android:onClick="saveComment"
         android:hint="@string/save"/>
 
     <TextView

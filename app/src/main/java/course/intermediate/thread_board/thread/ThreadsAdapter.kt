@@ -10,11 +10,11 @@ import course.intermediate.thread_board.R
 import kotlinx.android.synthetic.main.thread_view.view.*
 
 
-class ThreadsAdapter(val threads: MutableList<Thread>, val clickListener : (Thread) -> Unit) : RecyclerView.Adapter<ThreadsAdapter.ThreadViewHolder>() {
+class ThreadsAdapter(val threads: MutableList<Thread>, val clickListener : (position: Int) -> Unit) : RecyclerView.Adapter<ThreadsAdapter.ThreadViewHolder>() {
 
     class ThreadViewHolder(val threadView: View): RecyclerView.ViewHolder(threadView){
-        fun bind(thread: Thread, clickListener: (Thread) -> Unit){
-            threadView.btn_reply.setOnClickListener{clickListener(thread)}
+        fun bind(position: Int, clickListener: (position : Int) -> Unit){
+            threadView.btn_reply.setOnClickListener{clickListener(position)}
         }
     }
 
@@ -29,7 +29,7 @@ class ThreadsAdapter(val threads: MutableList<Thread>, val clickListener : (Thre
 
     override fun onBindViewHolder(holder: ThreadViewHolder, position: Int) {
       val thread = threads[position]
-        holder.bind(thread, clickListener)
+        holder.bind(position, clickListener)
       holder.threadView.tv_threadTitle.text = thread.title
       holder.threadView.tv_initialPost.text = thread.initialPost
       holder.threadView.tv_threadAuthor.text = "By: ${thread.author}"

@@ -1,3 +1,8 @@
 package course.intermediate.thread_board.comment
 
-data class Comment(val author: String, val body : String)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Comment(val author: String,
+                   val body : String): Parcelable

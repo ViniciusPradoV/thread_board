@@ -1,8 +1,14 @@
 package course.intermediate.thread_board.thread
 
+import android.os.Parcelable
 import course.intermediate.thread_board.comment.Comment
+import kotlinx.android.parcel.Parcelize
 
-data class Thread(val title: String, val author: String, val initialPost: String, var posts: MutableList<Comment>?)
+@Parcelize
+data class Thread(val title: String,
+                  val author: String,
+                  val initialPost: String,
+                  var posts: MutableList<Comment>?) : Parcelable
 
 fun getSampleThread() : MutableList<Thread> {
     return mutableListOf(
