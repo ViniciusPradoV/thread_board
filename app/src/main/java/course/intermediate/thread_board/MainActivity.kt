@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import course.intermediate.thread_board.comment.Comment
 import course.intermediate.thread_board.comment.NewCommentActivity
 import course.intermediate.thread_board.thread.NewThreadActivity
+import course.intermediate.thread_board.thread.Thread
 import course.intermediate.thread_board.thread.ThreadsAdapter
 import course.intermediate.thread_board.thread.getSampleThread
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,16 +25,26 @@ import kotlin.concurrent.thread
 class MainActivity : AppCompatActivity() {
 
     private val COMMENT_REQUEST_CODE = 0
+    private val THREAD_REQUEST_CODE = 1
 
-    var threadList = getSampleThread()
+    lateinit var threadList : MutableList<Thread>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if(savedInstanceState != null) {
-           savedInstanceState.getParcelable<Parcelable>("threadList")
+            Log.d("savedInstanceState", "SavedInstanceState: $savedInstanceState")
+            val threadArrayList =
+                savedInstanceState.getParcelableArrayList<Parcelable>("threadList")
+            Log.d("savedInstanceState", "Bundle: $threadArrayList")
+            threadList = threadArrayList as MutableList<Thread>
+        }
+
+        else{
+            threadList = getSampleThread()
         }
         setContentView(R.layout.activity_main)
         rv.layoutManager = LinearLayoutManager(this)
+        Log.d("savedInstanceState", "Adapter: ${threadList}")
         rv.adapter = ThreadsAdapter(threadList) {position -> threadItemClicked(position)}
 
     }
@@ -44,7 +56,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if(item?.itemId == R.id.new_thread){
-            switchActivity(NewThreadActivity::class.java)
+            val intent = Intent(this, NewThreadActivity::class.java)
+            startActivityForResult(intent,THREAD_REQUEST_CODE)
         }
 
         return true
@@ -61,17 +74,31 @@ class MainActivity : AppCompatActivity() {
             val body = data.getStringExtra("body")
             val position = data.getIntExtra("position", -1)
 
-            threadList[position].posts?.add(Comment(author,body))
+            threadList[position].posts.add(Comment(author,body))
+            rv.adapter?.notifyDataSetChanged()
+
+            Log.d("POSTS", "IF POSTS != NULL")
+            Log.d("POSTS", "SIZE ${threadList[position].posts.size}")
+
+        }
+        if(requestCode == THREAD_REQUEST_CODE &&
+            resultCode == Activity.RESULT_OK &&
+            data != null){
+            val title = data.getStringExtra("title")
+            val initialPost = data.getStringExtra("initialPost")
+            val author = data.getStringExtra("author")
+
+            threadList.add(Thread(title,author, initialPost, mutableListOf()))
+            rv.adapter?.notifyDataSetChanged()
+
+
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
-        super.onSaveInstanceState(outState, outPersistentState)
-    }
-
-    private fun switchActivity(c: Class<*>) {
-        val intent = Intent(this, c)
-        startActivity(intent)
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList("threadList", ArrayList<Parcelable>(threadList))
+        Log.d("savedInstanceState", "Outstate: $outState")
     }
 
     private fun threadItemClicked(position: Int) {

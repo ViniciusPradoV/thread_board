@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00897B"
+        android:onClick="saveThread"
         android:hint="@string/save"/>
 
     <TextView

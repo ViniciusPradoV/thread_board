@@ -30,10 +30,13 @@ class NewCommentActivity: AppCompatActivity() {
         val body = comment_body.text.toString()
         Toast.makeText(this, "Author: ${author}", Toast.LENGTH_LONG).show()
         Toast.makeText(this, "Body: ${body}", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Position: ${position}", Toast.LENGTH_LONG).show()
         val intent = Intent()
-        intent.putExtra("author", author)
-        intent.putExtra("body", body)
-        intent.putExtra("position", position)
+        intent.apply{
+            putExtra("position", position)
+            putExtra("author", author)
+            putExtra("body", body)
+        }
         setResult(RESULT_OK, intent)
         finish()
 

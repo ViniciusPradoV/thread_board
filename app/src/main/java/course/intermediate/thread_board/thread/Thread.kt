@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 data class Thread(val title: String,
                   val author: String,
                   val initialPost: String,
-                  var posts: MutableList<Comment>?) : Parcelable
+                  var posts: MutableList<Comment>) : Parcelable
 
 fun getSampleThread() : MutableList<Thread> {
     return mutableListOf(
@@ -17,14 +17,14 @@ fun getSampleThread() : MutableList<Thread> {
             author = "Carlos",
             initialPost = "This is the first post ever",
             posts = mutableListOf(
-                Comment(
+                /*Comment(
                     author = "Joao",
                     body = "Nice thread!"
                 ),
                 Comment(
                     author = "Silvia",
                     body = "Awesome thread!"
-                )
+                )*/
             )
         ),
         Thread(
@@ -42,11 +42,12 @@ fun getSampleThread() : MutableList<Thread> {
             title = "Third post!",
             author = "Carlod",
             initialPost = "This is the second post ever",
-            posts = null /*mutableListOf(
-                Comment(author = "Patricia",
-                    body = "Nice thread!"
-                )
-            )*/
+            posts =  mutableListOf(
+                /*Comment(
+                author = "Carla",
+                body = "Nice thread!"
+                )*/
+            )
         )
     )
 }
