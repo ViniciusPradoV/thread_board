@@ -9,7 +9,6 @@ import course.intermediate.thread_board.comment.CommentsAdapter
 import course.intermediate.thread_board.R
 import kotlinx.android.synthetic.main.thread_view.view.*
 
-
 class ThreadsAdapter(val threads: MutableList<Thread>, val clickListener : (position: Int) -> Unit) : RecyclerView.Adapter<ThreadsAdapter.ThreadViewHolder>() {
 
     class ThreadViewHolder(val threadView: View): RecyclerView.ViewHolder(threadView){

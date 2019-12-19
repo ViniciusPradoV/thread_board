@@ -27,20 +27,18 @@ class MainActivity : AppCompatActivity() {
     private val COMMENT_REQUEST_CODE = 0
     private val THREAD_REQUEST_CODE = 1
 
-    lateinit var threadList : MutableList<Thread>
+    private lateinit var threadList : MutableList<Thread>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(savedInstanceState != null) {
+        threadList = if(savedInstanceState != null) {
             Log.d("savedInstanceState", "SavedInstanceState: $savedInstanceState")
             val threadArrayList =
                 savedInstanceState.getParcelableArrayList<Parcelable>("threadList")
             Log.d("savedInstanceState", "Bundle: $threadArrayList")
-            threadList = threadArrayList as MutableList<Thread>
-        }
-
-        else{
-            threadList = getSampleThread()
+            threadArrayList as MutableList<Thread>
+        } else{
+            getSampleThread()
         }
         setContentView(R.layout.activity_main)
         rv.layoutManager = LinearLayoutManager(this)
@@ -89,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             val author = data.getStringExtra("author")
 
             threadList.add(Thread(title,author, initialPost, mutableListOf()))
-            rv.adapter?.notifyDataSetChanged()
+            rv.adapter?.notifyItemInserted(threadList.size)
 
 
         }
@@ -103,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun threadItemClicked(position: Int) {
         val intent = Intent(this, NewCommentActivity::class.java)
-        Toast.makeText(this, "Clicked: ${position}", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Clicked: $position", Toast.LENGTH_LONG).show()
         intent.putExtra("position", position)
         startActivityForResult(intent,COMMENT_REQUEST_CODE)
     }

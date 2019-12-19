@@ -2,6 +2,7 @@ package course.intermediate.thread_board.thread
 
 import android.os.Parcelable
 import course.intermediate.thread_board.comment.Comment
+import io.bloco.faker.Faker
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -11,42 +12,33 @@ data class Thread(val title: String,
                   var posts: MutableList<Comment>) : Parcelable
 
 fun getSampleThread() : MutableList<Thread> {
+
+    val faker = Faker()
+
     return mutableListOf(
         Thread(
-            title = "First post!",
-            author = "Carlos",
-            initialPost = "This is the first post ever",
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
             posts = mutableListOf(
-                /*Comment(
-                    author = "Joao",
-                    body = "Nice thread!"
-                ),
-                Comment(
-                    author = "Silvia",
-                    body = "Awesome thread!"
-                )*/
             )
         ),
         Thread(
-            title = "Post!",
-            author = "Carbos",
-            initialPost = "This is the second post ever",
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
             posts = mutableListOf(
                 Comment(
-                    author = "Carla",
-                    body = "Nice thread!"
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
                 )
             )
         ),
         Thread(
-            title = "Third post!",
-            author = "Carlod",
-            initialPost = "This is the second post ever",
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
             posts =  mutableListOf(
-                /*Comment(
-                author = "Carla",
-                body = "Nice thread!"
-                )*/
             )
         )
     )
