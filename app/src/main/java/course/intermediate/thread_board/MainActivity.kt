@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             val threadArrayList =
                 savedInstanceState.getParcelableArrayList<Parcelable>("threadList")
             Log.d("savedInstanceState", "Bundle: $threadArrayList")
-            threadArrayList as MutableList<Thread>
+            threadArrayList?.filterIsInstance<Thread>()!!.toMutableList()
         } else{
             getSampleThread()
         }
