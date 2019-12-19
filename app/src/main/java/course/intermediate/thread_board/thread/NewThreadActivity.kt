@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import course.intermediate.thread_board.R
-import kotlinx.android.synthetic.main.activity_new_comment.*
 import kotlinx.android.synthetic.main.activity_new_comment.error_message
 import kotlinx.android.synthetic.main.activity_new_thread.*
 
@@ -18,7 +17,7 @@ class NewThreadActivity: AppCompatActivity() {
         setContentView(R.layout.activity_new_thread)
     }
 
-    fun saveThread(v: View) {
+    fun saveThread(@Suppress("UNUSED_PARAMETER")v: View) {
         if (thread_author.isBlank() || thread_title.isBlank() || thread_post.isBlank()) {
             displayErrorMessage("Your threads needs a title, initial post and an author")
             return
@@ -27,9 +26,9 @@ class NewThreadActivity: AppCompatActivity() {
         val author = thread_author.text.toString()
         val initialPost = thread_post.text.toString()
         val title = thread_title.text.toString()
-        Toast.makeText(this, "Author: ${author}", Toast.LENGTH_LONG).show()
-        Toast.makeText(this, "Body: ${initialPost}", Toast.LENGTH_LONG).show()
-        Toast.makeText(this, "Body: ${title}", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Author: $author", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Body: $initialPost", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Body: $title", Toast.LENGTH_LONG).show()
         val intent = Intent()
         intent.apply{
             putExtra("author", author)

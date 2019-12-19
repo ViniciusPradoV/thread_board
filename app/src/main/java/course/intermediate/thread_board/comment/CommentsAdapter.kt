@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import course.intermediate.thread_board.R
 import kotlinx.android.synthetic.main.comment_view.view.*
 
-class CommentsAdapter(val comments: MutableList<Comment>) : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
+class CommentsAdapter(private val comments: MutableList<Comment>) : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
 
     class CommentViewHolder(val commentView : View) : RecyclerView.ViewHolder(commentView)
 

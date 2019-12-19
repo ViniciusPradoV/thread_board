@@ -16,7 +16,7 @@ class NewCommentActivity: AppCompatActivity() {
         setContentView(R.layout.activity_new_comment)
     }
 
-    fun saveComment(v: View) {
+    fun saveComment(@Suppress("UNUSED_PARAMETER")v: View) {
         if (comment_author.isBlank() || comment_body.isBlank()) {
             displayErrorMessage("Your comment needs an author and a body")
             return
@@ -28,9 +28,9 @@ class NewCommentActivity: AppCompatActivity() {
 
         val author = comment_author.text.toString()
         val body = comment_body.text.toString()
-        Toast.makeText(this, "Author: ${author}", Toast.LENGTH_LONG).show()
-        Toast.makeText(this, "Body: ${body}", Toast.LENGTH_LONG).show()
-        Toast.makeText(this, "Position: ${position}", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Author: $author", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Body: $body", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Position: $position", Toast.LENGTH_LONG).show()
         val intent = Intent()
         intent.apply{
             putExtra("position", position)
