@@ -40,6 +40,169 @@ fun getSampleThread() : MutableList<Thread> {
             initialPost = faker.lorem.paragraph(),
             posts =  mutableListOf(
             )
+        ),
+        Thread(
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
+            posts = mutableListOf(
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                )
+            )
+        ), Thread(
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
+            posts = mutableListOf(
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                )
+            )
+        ), Thread(
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
+            posts = mutableListOf(
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                )
+            )
+        ), Thread(
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
+            posts = mutableListOf(
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                )
+            )
+        ), Thread(
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
+            posts = mutableListOf(
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                )
+            )
+        ), Thread(
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
+            posts = mutableListOf(
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                )
+            )
+        ), Thread(
+            title = faker.lorem.question(),
+            author = faker.name.firstName(),
+            initialPost = faker.lorem.paragraph(),
+            posts = mutableListOf(
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                ),
+                Comment(
+                    author = faker.name.firstName(),
+                    body = faker.lorem.paragraph()
+                )
+            )
         )
     )
 }
