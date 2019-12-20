@@ -98,7 +98,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun threadItemClicked(position: Int) {
         val intent = Intent(this, NewCommentActivity::class.java)
-        Toast.makeText(this, "Clicked: $position", Toast.LENGTH_LONG).show()
         intent.putExtra("position", position)
         startActivityForResult(intent,commentRequestCode)
     }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import course.intermediate.thread_board.R
 import kotlinx.android.synthetic.main.activity_new_comment.*
@@ -28,9 +27,6 @@ class NewCommentActivity: AppCompatActivity() {
 
         val author = comment_author.text.toString()
         val body = comment_body.text.toString()
-        Toast.makeText(this, "Author: $author", Toast.LENGTH_LONG).show()
-        Toast.makeText(this, "Body: $body", Toast.LENGTH_LONG).show()
-        Toast.makeText(this, "Position: $position", Toast.LENGTH_LONG).show()
         val intent = Intent()
         intent.apply{
             putExtra("position", position)
